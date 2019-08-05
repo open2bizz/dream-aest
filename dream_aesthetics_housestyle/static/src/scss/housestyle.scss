@@ -1,0 +1,112 @@
+//Change background color of Odoo Enteprrise Theme
+.o_home_menu_background {
+    background: url(/dream_aesthetics_housestyle/static/src/img/Achtergrond_website1.jpg),
+        linear-gradient(to right bottom, #fff, #fff);
+    background-size:cover;
+}
+
+//
+.o_main_navbar {
+  position:relative;
+  height: 46px;
+  border-bottom: 1px solid #000000;
+  background-color: #000000;
+  color: white;
+}
+
+//Change the color of the menu items (only on menu specific items) in the top menu when hovering over it with mouse
+.o_main_navbar > ul > li > a:hover, .o_main_navbar > ul > li > label:hover {
+    background-color: #666666;
+}
+
+//Change the color of the 'application name' and 'return to main menu' items in the top menu
+.o_main_navbar > a:hover, .o_main_navbar > a:focus, .o_main_navbar > button:hover, .o_main_navbar > button:focus {
+    background-color: #333333;
+    color: inherit;
+}
+
+//Change the color of the menu item when you click on it in the top menu
+.o_main_navbar .show .dropdown-toggle {
+  background-color: #333333;
+}
+
+//Change the color of default url/links in Odoo
+a {
+    color: #f78f00;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+//Change the color of default url/links in Odoo when hovering over them with the mouse
+a:hover {
+    color: #ab6300;
+    text-decoration: none;
+}
+
+//Change the color of primary buttons everywhere in Odoo
+.btn-primary {
+    color: #fff;
+    background-color: #f78f00;
+    border-color: #f78f00;
+}
+
+//Change the color of primary buttons everywhere in Odoo when you hover over it with mouse
+.btn-primary:hover {
+color: #fff;
+background-color: #ab6300;
+border-color: #ab6300;
+}
+
+//Changes the color of the primary buttons everyhwere in Odoo when you click on the button
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #ab6300;
+    border-color: #ab6300;
+}
+
+//Changes the color of the secondary buttons everywhere in Odoo
+.btn-secondary {
+    background-color: white;
+    border-color: white;
+    color: #f78f00;
+}
+
+//Change the color of secondary buttons everywhere in Odoo when you hover over it with mouse
+.btn-secondary:hover {
+    color: #ab6300;
+    background-color: #e6e5e5;
+    border-color: #e6e5e5;
+}
+
+//Removes green border around primary button when you click on it
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0.5);
+}
+
+//Change the color of page names that are not active in a notebook in formview
+.o_form_view .o_notebook > .nav.nav-tabs > .nav-item > .nav-link:hover, .o_form_view .o_notebook > .nav.nav-tabs > .nav-item > .nav-link:focus, .o_form_view .o_notebook > .nav.nav-tabs > .nav-item > .nav-link:active {
+    outline: none;
+    color: #f78f00;
+}
+
+//Change the color of text in statusbars in form views
+.o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button.btn-primary.disabled {
+    color: #f78f00;
+    font-size: 11px;
+    background-color: #e9ecef;
+    cursor: default;
+}
+
+//Changes the text color of app names in the main menu
+.o_home_menu .o_home_menu_scrollable .o_apps .o_app .o_caption {
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    margin: 4px 0;
+    color: #000000;
+    text-shadow: 0 1px 1px rgba(150,150,150 , 0.8);
+}

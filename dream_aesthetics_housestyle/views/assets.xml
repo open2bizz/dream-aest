@@ -1,0 +1,7 @@
+<odoo>
+    <template id="dream_aesthetics_housetyle" name="dream_aesthetics_housetyle" inherit_id="web.assets_backend">
+        <xpath expr=".">
+            <link rel="stylesheet" href="/dream_aesthetics_housestyle/static/src/scss/housestyle.scss" />
+         </xpath>
+    </template>
+</odoo>
