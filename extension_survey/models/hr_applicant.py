@@ -19,7 +19,7 @@ class Applicant(models.Model):
             response = self.env['survey.user_input'].create({'survey_id': self.survey_id.id, 'partner_id': self.partner_id.id})
             self.response_id = response.id
             # TP 18-9-2019: Add function to save the currect survey version. If opened later use this version, not the latest one
-            self.filled_survey_id = survey_id
+            self.filled_survey_id = self.survey_id
         else:
             response = self.response_id
         # grab the token of the response and start surveying
