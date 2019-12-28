@@ -1,0 +1,4 @@
+[submodule "thomaspot/dream-aesth"]
+	path = thomaspot/dream-aesth
+	url = git@github.com:thomaspot/dream-aesth.git
+	branch = 12.0
