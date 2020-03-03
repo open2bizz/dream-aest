@@ -10,7 +10,7 @@
               <page string="Trainers">
                 <group>
                   <field name="trainer_id"/>
-                  <field name="subtrainer_ids" readonly='1'/>
+                  <field name="subtrainer_ids"/>
                 </group>
               </page>
               <page string="Revenue">
