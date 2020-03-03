@@ -3,93 +3,70 @@
 
 from odoo import api, fields, models, _
 
-fields_to_log = [
-'additional_note',
-'address_home_id',
-'address_id',
-'bank_account_id',
-'birthday',
-'category_ids',
-'certificate',
-'child_ids',
-'children',
-'coach_id',
-'color',
-'contract_ids',
-'country_id',
-'country_of_birth',
-'department_id',
-'emergency_contact',
-'emergency_phone',
-'gender',
-'identification_id',
-'image',
-'job_id',
-'job_title',
-'km_home_work',
-'marital',
-'medic_exam',
-'mobile_phone',
-'name',
-'notes',
-'parent_id',
-'passport_id',
-'permit_no',
-'place_of_birth',
-'sinid',
-'spouse_birthdate',
-'spouse_complete_name',
-'ssnid',
-'study_field',
-'study_school',
-'timesheet_cost',
-'timesheet_manager_id',
-'timesheet_validated',
-'tz',
-'user_id',
-'vehicle',
-'visa_expire',
-'visa_no',
-'website_message_ids',
-'work_email',
-'work_location',
-'work_phone',
-'trainer_id',
-'subtrainer_ids',
-'percentage_pt_revenue',
-'percentage_coaching_revenue',
-'percentage_pt_revenue_subtrainer',
-'percentage_coaching_revenue_subtrainer'
-]
 
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
-    trainer_id = fields.Many2one('hr.employee', string="Trainer")
-    subtrainer_ids = fields.One2many('hr.employee', 'trainer_id', string="Subtrainers")
+    trainer_id = fields.Many2one('hr.employee', string="Trainer", track_visibility="onchange")
+    subtrainer_ids = fields.Many2many(comodel_name='hr.employee',
+                            relation='subtrainers_employee',
+                            column1='employee_id',
+                            column2='employee_trainer_id',
+                            track_visibility="onchange")
+
     percentage_pt_revenue = fields.Float('Percentage PT omzet (%)')
     percentage_coaching_revenue = fields.Float('Percentage Coaching omzet (%)')
     percentage_pt_revenue_subtrainer = fields.Float('Percentage PT omzet subtrainer (%)')
     percentage_coaching_revenue_subtrainer = fields.Float('Percentage Coaching omzet subtrainer (%)')
 
-    def write(self, vals):
-        res = super(HrEmployee, self).write(vals)
-        all_changes = ""
-        for field in fields_to_log:
-            if field in vals:
-                text_to_add = """<li><span style="font-weight:bold;">%s</span> --> %s</li>""" % (self._get_field_label(field), vals.get(field))
-                all_changes += text_to_add
-                no_changes = False
-        changelog = _("""
-        <p>The following fields have been changed:
-        <ul>%s</ul>
-        </p>
 
-        """) % (all_changes)
-        if no_changes == False:
-            self.message_post(body=_("%s") %(changelog))
-        return res
+# inhertitances
 
-    def _get_field_label(self, field):
-        field_record = self.env['ir.model.fields'].search([('model_id','=','hr.employee'),('name','=',field)])
-        return field_record.field_description
+    birthday = fields.Date(track_visibility="onchange")
+    spouse_birthdate = fields.Date(track_visibility="onchange")
+    notes = fields.Text(track_visibility="onchange")
+    additional_note = fields.Text(track_visibility="onchange")
+    visa_expire = fields.Text(track_visibility="onchange")
+    name = fields.Char(track_visibility="onchange")
+    user_id = fields.Many2one(track_visibility="onchange")
+    active = fields.Boolean(track_visibility="onchange")
+    address_home_id = fields.Many2one(track_visibility="onchange")
+    country_id = fields.Many2one(track_visibility="onchange")
+    gender = fields.Selection(track_visibility="onchange")
+    marital = fields.Selection(track_visibility="onchange")
+    spouse_complete_name = fields.Char(track_visibility="onchange")
+    spouse_birthdate = fields.Date(track_visibility="onchange")
+    children = fields.Integer(track_visibility="onchange")
+    place_of_birth = fields.Char(track_visibility="onchange")
+    country_of_birth = fields.Many2one(track_visibility="onchange")
+    birthday = fields.Date('Date of Birth', groups="hr.group_hr_user")
+    ssnid = fields.Char(track_visibility="onchange")
+    sinid = fields.Char(track_visibility="onchange")
+    identification_id = fields.Char(track_visibility="onchange")
+    passport_id = fields.Char(track_visibility="onchange")
+    bank_account_id = fields.Many2one(track_visibility="onchange")
+    permit_no = fields.Char(track_visibility="onchange")
+    visa_no = fields.Char(track_visibility="onchange")
+    visa_expire = fields.Date(track_visibility="onchange")
+    additional_note = fields.Text(track_visibility="onchange")
+    certificate = fields.Selection(track_visibility="onchange")
+    study_field = fields.Char(track_visibility="onchange")
+    study_school = fields.Char(track_visibility="onchange")
+    emergency_contact = fields.Char(track_visibility="onchange")
+    emergency_phone = fields.Char(track_visibility="onchange")
+    km_home_work = fields.Integer(track_visibility="onchange")
+    job_title = fields.Char(track_visibility="onchange")
+    address_id = fields.Many2one(track_visibility="onchange")
+    work_phone = fields.Char(track_visibility="onchange")
+    mobile_phone = fields.Char(track_visibility="onchange")
+    work_email = fields.Char(track_visibility="onchange")
+    work_location = fields.Char('Work Location')
+    job_id = fields.Many2one(track_visibility="onchange")
+    department_id = fields.Many2one(track_visibility="onchange")
+    parent_id = fields.Many2one(track_visibility="onchange")
+    child_ids = fields.One2many(track_visibility="onchange")
+    coach_id = fields.Many2one(track_visibility="onchange")
+    category_ids = fields.Many2many(track_visibility="onchange")
+    notes = fields.Text(track_visibility="onchange")
+    color = fields.Integer(track_visibility="onchange")
+# end inhertitances
