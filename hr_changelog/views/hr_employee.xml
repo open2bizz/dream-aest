@@ -13,12 +13,16 @@
                   <field name="subtrainer_ids"/>
                 </group>
               </page>
-              <page string="Revenue">
+              <page string="Omzetten">
                 <group>
-                  <field name="percentage_pt_revenue"/>
-                  <field name="percentage_coaching_revenue"/>
-                  <field name="percentage_pt_revenue_subtrainer"/>
-                  <field name="percentage_coaching_revenue_subtrainer"/>
+                  <group>
+                  <field name="percentage_pt_revenue" widget="percentage"/>
+                  <field name="percentage_coaching_revenue" widget="percentage"/>
+                  </group>
+                  <group>
+                  <field name="percentage_pt_revenue_subtrainer" widget="percentage"/>
+                  <field name="percentage_coaching_revenue_subtrainer" widget="percentage"/>
+                  </group>
                 </group>
               </page>
             </xpath>
