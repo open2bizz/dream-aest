@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="hr_trainer_and_revenue_fields" model="ir.ui.view">
+        <field name="name">hr_trainer_and_revenue_fields</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+              <page string="Trainers">
+                <group>
+                  <field name="trainer_id"/>
+                  <field name="subtrainer_ids"/>
+                </group>
+              </page>
+              <page string="Revenue">
+                <group>
+                  <field name="percentage_pt_revenue"/>
+                  <field name="percentage_coaching_revenue"/>
+                  <field name="percentage_pt_revenue_subtrainer"/>
+                  <field name="percentage_coaching_revenue_subtrainer"/>
+                </group>
+              </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
